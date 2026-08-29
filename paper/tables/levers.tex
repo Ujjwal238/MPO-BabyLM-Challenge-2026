@@ -1,0 +1,34 @@
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{llrr}
+    \toprule
+    \textbf{Intervention} & \textbf{Site} & \textbf{BLiMP} & \textbf{Suppl.} \\
+    \midrule
+    Baseline hybrid                & ---        & \rFastBase   & \rFastSuppBase \\
+    \midrule
+    Contrastive grammat.$^{\dagger}$ & objective  & \rLevContrB  & \rLevContrS \\
+    Span masking                   & objective  & \rLevSpanB   & \rLevSpanS  \\
+    Muon optimizer             & optimizer  & \rLevMuonB   & \rLevMuonS  \\
+    Checkpoint averaging                       & weights    & \rLevSoupB   & \rFastSuppBase \\
+    Adaptive masking                   & masking    & \rLevAdaptB  & \rLevAdaptS \\
+    Selective LM                        & token loss & \rLevSlmB    & \rLevSlmS   \\
+    Morph.-aware tokenization                      & tokenizer  & \rLevMorphB  & \rLevMorphS \\
+    \midrule
+    \MPO{} (\S\ref{sec:method})    & post-training & \textbf{70.24} & \textbf{65.60}$^{*}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{\textbf{Eight interventions, one improvement.} Fast BLiMP and BLiMP
+  Supplement under an identical budget, recipe, and seed; every intervention
+  changes
+  one component relative to the baseline hybrid. $^{\dagger}$Contrastive
+  training crashed at 77M words and is compared at the matched 70M checkpoint
+  (reference 70.13/65.60). $^{*}$Supplement varies with seed on this
+  50-item-per-subtask
+  fast set (\S\ref{sec:results-mpo}). A planned self-distillation
+  intervention
+  never produced a comparable run: three resident fp32 teachers exceed 16\,GB,
+  which we report as a hardware exclusion rather than a result.}
+  \label{tab:levers}
+\end{table}

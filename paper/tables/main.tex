@@ -1,0 +1,38 @@
+\begin{table*}[t]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4.5pt}
+  \begin{tabular}{lrrrrrrrr}
+    \toprule
+    \textbf{Model} & \textbf{NLP} & \textbf{BLiMP} & \textbf{Supp.} & \textbf{EWoK} & \textbf{Entity} & \textbf{PIQA} & \textbf{COMPS} & \textbf{GLUE} \\
+    \midrule
+    \multicolumn{9}{l}{\textit{Official baselines}} \\
+    \quad GPT-2 (BabyLM 2026)          & \rNlpGtwo & \rBlimpGtwo & \rSuppGtwo & \rEwokGtwo & \rEntGtwo & \rPiqaGtwo & \rCompsGtwo & \rGlueGtwo \\
+    \quad Interaction (BabyLM 2026)    & \rNlpInter & \rBlimpInter & \rSuppInter & \rEwokInter & \rEntInter & \rPiqaInter & \rCompsInter & \rGlueInter \\
+    \midrule
+    \multicolumn{9}{l}{\textit{Other Strict-Small submissions (task-complete, ranked above ours)}} \\
+    \quad BabySteps-MurphysLaw (rank 1) & \textbf{\rNlpBaby} & \rBlimpBaby & \rSuppBaby & \rEwokBaby & \rEntBaby & \rPiqaBaby & \rCompsBaby & \textbf{\rGlueBaby} \\
+    \quad wwm\_curriculum (rank 2)      & \rNlpWwm & \rBlimpWwm & \rSuppWwm & \textbf{\rEwokWwm} & \textbf{\rEntWwm} & \rPiqaWwm & \rCompsWwm & \rGlueWwm \\
+    \quad RecGPT-10M (rank 3)           & \rNlpRec & \textbf{\rBlimpRec} & \rSuppRec & \rEwokRec & \rEntRec & \textbf{\rPiqaRec} & \textbf{\rCompsRec} & \rGlueRec \\
+    \midrule
+    \multicolumn{9}{l}{\textit{Ours}} \\
+    \quad GPT-BERT (\rEpochs\,ep)       & \rNlpBase  & \rBlimpBase  & \rSuppBase  & \rEwokBase  & \rEntBase  & \rPiqaBase  & \rCompsBase  & \rGlueBase  \\
+    \quad \textbf{+ \MPO{}} (\rDpoEpochs\,ep) & \rNlpDpo & \rBlimpDpo & \textbf{\rSuppDpo} & \rEwokDpo & \rEntDpo & \rPiqaDpo & \rCompsDpo & \rGlueDpo \\
+    \bottomrule
+  \end{tabular}
+  \caption{\textbf{Main results on the official BabyLM~2026 Strict-Small
+  metrics} (Overall NLP average and its seven task components; AoA and reading
+  omitted, since AoA rounds to zero for nearly every submission under the
+  corrected scorer, the GPT-2 baseline at \rAoaGtwo{} being the exception).
+  Entity Tracking is the bias-filtered version; PIQA is
+  GlobalPIQA. Comparison rows are the task-complete entries ranked above
+  ours on the
+  live leaderboard (fetched \rBoardFetch{}, \rFieldSize{} entries;
+  submissions that have
+  not rerun the new Entity/PIQA tasks are omitted). Our entries rank
+  \rRankDpo{} and \rRankBase{}; \textbf{bold} marks the
+  best value per column among the tabulated entries.
+  \MPO{} improves over our fully-trained baseline on five of seven columns while
+  using \rDpoEpochs{} rather than \rEpochs{} epochs.}
+  \label{tab:main}
+\end{table*}

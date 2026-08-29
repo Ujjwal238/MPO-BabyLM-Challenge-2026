@@ -1,0 +1,168 @@
+diff --git a/strict/evaluation_pipeline/AoA_word/evaluation_functions.py b/strict/evaluation_pipeline/AoA_word/evaluation_functions.py
+index 5554ee1..3413cf6 100644
+--- a/strict/evaluation_pipeline/AoA_word/evaluation_functions.py
++++ b/strict/evaluation_pipeline/AoA_word/evaluation_functions.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python
+ import logging
++import os
+ import random
+ import typing as t
+ from pathlib import Path
+@@ -50,20 +51,34 @@ class StepSurprisalExtractor:
+         if isinstance(self.model_cache_dir, str):
+             self.model_cache_dir = Path(self.model_cache_dir)
+ 
++    def _resolve_source(self, step: int) -> tuple[str, str | None]:
++        """Resolve (path_or_name, revision) for a checkpoint step.
++
++        If AOA_LOCAL_CKPT_DIR is set, load the byte-identical checkpoint from a
++        local directory ``{base}/{step}`` (no Hub access, no per-step download —
++        avoids the network stall that occurs between checkpoints on flaky links).
++        Otherwise fall back to the upstream behaviour: the Hub repo at revision=step.
++        """
++        local_base = os.environ.get("AOA_LOCAL_CKPT_DIR")
++        if local_base:
++            return str(Path(local_base) / str(step)), None
++        return self.model_name, step
++
+     def load_model_for_step(self, step: int) -> AutoModelForCausalLM:
+         """Load model and tokenizer for a specific step."""
++        src, rev = self._resolve_source(step)
+         try:
+             if self.backend in ["mlm", "mntp"]:
+                 model = AutoModelForMaskedLM.from_pretrained(
+-                    self.model_name, trust_remote_code=True, revision=step
++                    src, trust_remote_code=True, revision=rev
+                 )
+             elif self.backend == "causal":
+                 model = AutoModelForCausalLM.from_pretrained(
+-                    self.model_name, trust_remote_code=True, revision=step
++                    src, trust_remote_code=True, revision=rev
+                 )
+             elif self.backend in ["enc_dec_mask", "enc_dec_prefix"]:
+                 model = AutoModelForSeq2SeqLM.from_pretrained(
+-                    self.model_name, trust_remote_code=True, revision=step
++                    src, trust_remote_code=True, revision=rev
+                 )
+             else:
+                 raise f"The backend {self.backend} is not implemented, please implemented yourself or raise an issue on the GitHub!"
+@@ -75,12 +90,13 @@ class StepSurprisalExtractor:
+         return model
+ 
+     def load_tokenizer_for_step(self, step: int) -> AutoProcessor:
++        src, rev = self._resolve_source(step)
+         try:
+             processor = AutoProcessor.from_pretrained(
+-                self.model_name,
++                src,
+                 trust_remote_code=True,
+                 padding_side="right",
+-                revision=step,
++                revision=rev,
+             )
+             tokenizer = (
+                 processor.tokenizer if hasattr(processor, "tokenizer") else processor
+diff --git a/strict/evaluation_pipeline/AoA_word/run.py b/strict/evaluation_pipeline/AoA_word/run.py
+index 514e896..904eb7c 100755
+--- a/strict/evaluation_pipeline/AoA_word/run.py
++++ b/strict/evaluation_pipeline/AoA_word/run.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python
+ import argparse
++import os
+ import logging
+ import pathlib
+ from pathlib import Path
+@@ -109,7 +110,7 @@ def save_results(results_data: dict, result_file: Path) -> None:
+ def main() -> None:
+     """Main function demonstrating usage."""
+     args = parse_args()
+-    device = "cuda" if torch.cuda.is_available() else "cpu"
++    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+ 
+     target_words, contexts = load_eval(args.word_path, args.min_context, args.debug)
+     result_file, resume_file = config_paths(args)
+@@ -132,6 +133,9 @@ def main() -> None:
+     results_data = extractor.analyze_steps(
+         contexts=contexts,
+         target_words=target_words,
++        # opt-in: score the bare word after BOS (Chang & Bergen's no-context variant);
++        # default (unset) keeps the upstream behaviour (in-context surprisal).
++        use_bos_only=os.environ.get("AOA_USE_BOS_ONLY", "") == "1",
+         resume_path=resume_file,
+     )
+ 
+diff --git a/strict/evaluation_pipeline/finetune/run.py b/strict/evaluation_pipeline/finetune/run.py
+index b027ca9..753f4ab 100644
+--- a/strict/evaluation_pipeline/finetune/run.py
++++ b/strict/evaluation_pipeline/finetune/run.py
+@@ -83,7 +83,7 @@ if __name__ == "__main__":
+     args: Namespace = _parse_arguments()
+ 
+     seed_everything(args.seed)
+-    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
++    device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
+ 
+     model_name: str = args.model_name
+     if args.task == "mnli":
+diff --git a/strict/evaluation_pipeline/reading/evaluation_functions.py b/strict/evaluation_pipeline/reading/evaluation_functions.py
+index ad48ad0..c7a65a6 100644
+--- a/strict/evaluation_pipeline/reading/evaluation_functions.py
++++ b/strict/evaluation_pipeline/reading/evaluation_functions.py
+@@ -3,7 +3,7 @@ import numpy as np
+ 
+ from evaluation_pipeline.utils import get_logits
+ 
+-DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
++DEVICE = torch.device('cuda') if torch.cuda.is_available() else (torch.device('mps') if torch.backends.mps.is_available() else torch.device('cpu'))
+ 
+ 
+ def get_p(sentence, word, model, tokenizer):  # gets p of word (word) given context. Relies on model and tokenizer.
+diff --git a/strict/evaluation_pipeline/reading/run.py b/strict/evaluation_pipeline/reading/run.py
+index d8e94ac..278e63c 100644
+--- a/strict/evaluation_pipeline/reading/run.py
++++ b/strict/evaluation_pipeline/reading/run.py
+@@ -10,7 +10,7 @@ import math
+ import json
+ import torch
+ 
+-DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
++DEVICE = torch.device('cuda') if torch.cuda.is_available() else (torch.device('mps') if torch.backends.mps.is_available() else torch.device('cpu'))
+ 
+ 
+ def parse_args():
+diff --git a/strict/evaluation_pipeline/sentence_zero_shot/compute_results.py b/strict/evaluation_pipeline/sentence_zero_shot/compute_results.py
+index c407590..4064ada 100644
+--- a/strict/evaluation_pipeline/sentence_zero_shot/compute_results.py
++++ b/strict/evaluation_pipeline/sentence_zero_shot/compute_results.py
+@@ -12,7 +12,11 @@ from collections import Counter, defaultdict
+ from tqdm import tqdm
+ import argparse
+ 
+-DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
++DEVICE = (
++    torch.device('cuda') if torch.cuda.is_available()
++    else torch.device('mps') if torch.backends.mps.is_available()
++    else torch.device('cpu')
++)
+ 
+ 
+ def compute_results(args: argparse.ArgumentParser, model: torch.nn.Module, dataloader: DataLoader, temperatures: list[float]):
+diff --git a/strict/evaluation_pipeline/sentence_zero_shot/run.py b/strict/evaluation_pipeline/sentence_zero_shot/run.py
+index 6108bf8..4ada76f 100644
+--- a/strict/evaluation_pipeline/sentence_zero_shot/run.py
++++ b/strict/evaluation_pipeline/sentence_zero_shot/run.py
+@@ -13,7 +13,11 @@ import torch
+ from evaluation_pipeline.sentence_zero_shot.dataset import get_dataloader
+ from evaluation_pipeline.sentence_zero_shot.compute_results import compute_results
+ 
+-DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
++DEVICE = (
++    torch.device('cuda') if torch.cuda.is_available()
++    else torch.device('mps') if torch.backends.mps.is_available()
++    else torch.device('cpu')
++)
+ 
+ 
+ def _parse_arguments():

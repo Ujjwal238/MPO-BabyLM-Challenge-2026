@@ -1,0 +1,11 @@
+2026-07-02 00:43:43 | === run 'smoke_distill16' | device=mps | config=small (33.0M params) ===
+2026-07-02 00:43:43 | seq_len=128 batch=16 grad_accum=8 (eff batch 128) | lr=0.0005 | epochs=10
+2026-07-02 00:43:43 | blocks/epoch=126,267 | steps/epoch=986 | max_steps=30 | ~163M tokens over 10 epochs
+2026-07-02 00:43:43 | live log: /Users/admin1/Downloads/babylm-eval/checkpoints/smoke_distill16/train.log
+2026-07-02 00:43:43 | optimizer: AdamW (lr=0.0005)
+2026-07-02 00:43:44 | SELF-DISTILL ON | 3 teachers | alpha=0.5 temp=2.0
+2026-07-02 00:43:44 |   teacher: /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/final
+2026-07-02 00:43:44 |   teacher: /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_span_v2/final
+2026-07-02 00:43:44 |   teacher: /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_muon_v1/final
+2026-07-02 00:43:55 | [0:00:11] [------------------------]   3.3% | step      1/30 | ep 0 | masked | loss  7.883 | kd  5.864 | lr 5.00e-04 |   0.01M words |  1484 tok/s | ETA 0:05:20
+2026-07-02 00:44:36 | [0:00:51] [####--------------------]  16.7% | step      5/30 | ep 0 | masked | loss  6.624 | kd  4.842 | lr 4.77e-04 |   0.05M words |  1585 tok/s | ETA 0:04:18

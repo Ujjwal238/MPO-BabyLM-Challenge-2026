@@ -1,0 +1,12 @@
+2026-07-05 02:09:26 | === overnight AoA-fix orchestrator START ===
+2026-07-05 02:09:26 | waiting for Phase-1 causal AoA to finish...
+2026-07-05 03:49:27 | causal AoA ready (19 steps)
+2026-07-05 03:49:28 | local proxy Spearman(acq-step, child-AoA): causal=(0.0997, 485) mntp=(0.0889, 485)  (directional; higher |rho| better)
+2026-07-05 03:49:32 | re-collated ujjwal-bored with causal AoA
+2026-07-05 03:55:48 |   [ujjwal-bored] STATUS: This submission will be counted towards the BabyLM challenge!
+2026-07-05 03:55:48 |   [ujjwal-bored] our row not in returned table (default view is 'strict'; check strict-small filter)
+2026-07-05 03:55:49 | assembled DPO causal AoA (16 steps, chck_1M..70M)
+2026-07-05 03:55:52 | re-collated ujjwal-very-bored with causal AoA
+2026-07-05 04:01:06 |   [ujjwal-very-bored] STATUS: This submission will be counted towards the BabyLM challenge!
+2026-07-05 04:01:06 |   [ujjwal-very-bored] our row not in returned table (default view is 'strict'; check strict-small filter)
+2026-07-05 04:01:06 | === DONE. Check the leaderboard strict-small filter for updated AoA / Text Average. ===

@@ -1,0 +1,22 @@
+\begin{abstract}
+Sample-efficient pretraining under a developmental data budget, such as
+the ten million words and ten epochs of the BabyLM Strict-Small track, is
+usually approached by adding training signal: a new objective, optimizer,
+curriculum, or teacher. The budget itself receives less scrutiny. We show
+that much of it is spent after learning has stopped. A
+\rParamsM{}-parameter GPT-BERT hybrid trained under the track rules
+saturates on downstream evaluations by roughly \rPeakCkpt{} words seen,
+about $70\%$ of its permitted exposure, while training loss continues to
+fall; the final epochs improve fit, not competence. From this diagnosis we
+derive three design principles, timing, preservation, and alignment, and
+instantiate them as \emph{\MPOlong{}} (\MPO{}): a short post-training
+phase, begun at the saturation checkpoint, that teaches the model to
+prefer real corpus sentences over length-preserving corruptions of them
+under a frozen-reference penalty. A controlled study of seven in-training
+interventions supports the principles: none improves on the baseline, and
+the unanchored ones damage the same cluster of long-distance dependencies
+first. \MPO{} improves five of the seven official task averages, concedes
+under a point on the other two, is alone in repairing that cluster, and
+matches the fully trained baseline with \rDpoEpochs{} rather than
+\rEpochs{} epochs; our \MPO{} entry places \rRankDpo{} in the track.
+\end{abstract}

@@ -1,0 +1,32 @@
+% numbers from DPO_ABLATIONS.md + dpo_canary logs (fast eval at the step-1250 operating point)
+\begin{table}[ht]
+  \centering
+  \small
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular}{llccrr}
+    \toprule
+    \textbf{Init} & \textbf{Negatives} & $\beta$ & \textbf{Seed} & \textbf{BLiMP} & \textbf{Suppl.} \\
+    \midrule
+    \multicolumn{4}{l}{\textit{no preference phase (baseline)}} & \rFastBase & \rFastSuppBase \\
+    \midrule
+    70M  & mixed & 0.1 & 42 & \textbf{70.24} & \textbf{65.60} \\
+    70M  & mixed & 0.1 & 43 & 70.14 & 64.40 \\
+    70M  & mixed & 0.1 & 44 & \textbf{70.28} & 63.60 \\
+    30M  & mixed & 0.1 & 42 & 64.96 & 62.80 \\
+    99M  & mixed & 0.1 & 42 & 70.26 & 62.40 \\
+    70M  & hard  & 0.1 & 42 & 70.16 & 64.40 \\
+    70M  & hard  & 0.2 & 42 & 70.14 & 64.00 \\
+    \bottomrule
+  \end{tabular}
+  \caption{\textbf{\MPO{} ablations} (fast BLiMP / Supplement at the step-1250
+  operating point). Seeds vary the entire phase, not just data order. The two
+  init rows bracket the saturation checkpoint: from 99M the phase matches the
+  70M-init BLiMP while spending 29M more words of budget, and from the
+  pre-saturation 30M checkpoint it stays near that checkpoint's own baseline
+  (\rThirtyBaseB{}/\rThirtyBaseS{}), five points below every saturated init.
+  ``Hard'' reweights corruptions toward the more adversarial edit
+  types; together with the larger $\beta$ it raises preference accuracy
+  (0.85$\rightarrow$0.90) and lowers evaluation scores. The supplement column
+  is measured on 50 items per subtask and fluctuates accordingly.}
+  \label{tab:ablations}
+\end{table}

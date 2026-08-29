@@ -1,0 +1,31 @@
+% Source: same values as figures/fig_fragile.py (from checkpoints/*eval*.log; MPO row
+% re-verified 2026-07-11 by rerunning the canary on gptbert_small_dpo_v1/chck_dpo_1250).
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\tabcolsep}{3.5pt}
+  \begin{tabular}{lrrrr}
+    \toprule
+    & \multicolumn{1}{c}{wh gap} & \multicolumn{1}{c}{long-d.} & \multicolumn{1}{c}{distr.} & \multicolumn{1}{c}{ellipsis} \\
+    \midrule
+    Baseline & 71.5 & 32.5 & 62.0 & 91.5 \\
+    \midrule
+    Contrastive obj. & 10.5 & 3.0 & 19.0 & 63.5 \\
+    \Lmuon{} & 25.0 & 5.5 & 27.0 & 65.0 \\
+    Span masking & 55.0 & 9.0 & 39.0 & 94.5 \\
+    Selective LM & 56.0 & 12.5 & 37.5 & 90.5 \\
+    Morph.\ tokenization & 67.5 & 23.0 & 41.5 & 93.5 \\
+    Adaptive masking & 70.0 & 20.5 & 58.5 & 94.0 \\
+    Checkpoint avg. & 70.0 & 30.0 & 61.0 & 91.5 \\
+    \midrule
+    \textbf{\MPO{} (ours)} & \textbf{75.5} & \textbf{36.5} & 59.5 & 91.5 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Absolute fast BLiMP accuracy on the fragile cluster
+  $\mathcal{F}$ (the values behind Figure~\ref{fig:fragile}): {wh gap} =
+  \emph{wh\_vs\_that\_with\_gap}, {long-d.} = its long-distance variant,
+  {distr.} = \emph{distractor\_agreement\_relational\_noun}, {ellipsis} =
+  \emph{ellipsis\_n\_bar\_2}. \MPO{} is the only intervention that improves
+  the two filler--gap columns.}
+  \label{tab:fragileabs}
+\end{table}

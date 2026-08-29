@@ -1,0 +1,44 @@
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}l@{\hspace{6pt}}l@{}}
+    \toprule
+    \multicolumn{2}{l}{\textit{Pretraining}} \\
+    \midrule
+    Hidden / layers / heads / FFN & \rHidden{} / \rLayers{} / \rHeads{} / 1{,}280 \\
+    Parameters (tied embeddings) & \rParams{} \\
+    Vocabulary (byte-level BPE) & \rVocab{} \\
+    Sequence length & \rSeq{} \\
+    Batch $\times$ grad.\ accum. & $32 \times 4$ (eff.\ 128) \\
+    Optimizer & AdamW, lr $5{\times}10^{-4}$ \\
+    $(\beta_1, \beta_2)$ / weight decay & $(0.9, 0.98)$ / $0.1$ \\
+    Schedule & cosine, $2\%$ warmup \\
+    Gradient clip & 2.0 \\
+    Masked-mode share $z$ & $15/16$ of micro-batches \\
+    Masking rate & $0.30 \rightarrow 0.15$ (annealed) \\
+    Epochs / words seen & \rEpochs{} / $\approx$\rWordsSeen \\
+    Seed & 42 \\
+    Wall clock & 12\,h\,27\,m \\
+    \midrule
+    \multicolumn{2}{l}{\textit{\MPO{} phase}} \\
+    \midrule
+    Init.\ / reference & \rPeakCkpt{} ckpt (frozen copy) \\
+    $\beta$ & \rBeta \\
+    Steps & \rDpoSteps{} (selected: 1{,}250) \\
+    Optimizer & AdamW, lr $\rDpoLR$, cosine \\
+    Pairs per step & \rDpoPairs \\
+    Corruption mix & uniform over the four edits \\
+    Retained-MLE mix & $p=0.5$, one hybrid batch \\
+    Gradient clip & 1.0 \\
+    Checkpoint interval & 250 steps \\
+    Seed & 42 \\
+    Wall clock & \rDpoMinutes{}\,min \\
+    \bottomrule
+  \end{tabular}
+  \caption{Complete hyperparameters for both phases. All runs use one M1
+  laptop (16\,GB, MPS). GLUE finetuning uses the official recipe at
+  sequence length \rSeq{}, batch 32 (16 for BoolQ and MultiRC), 10 epochs
+  (30 for WSC), with pipeline defaults otherwise.}
+  \label{tab:hparams}
+\end{table}

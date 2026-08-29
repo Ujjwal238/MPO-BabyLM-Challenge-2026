@@ -1,0 +1,12 @@
+# conda env create -f environment.yml && conda activate mpo
+#
+# conda-forge only: the Anaconda default channels are licence-gated for commercial use,
+# and nothing here needs them.
+name: mpo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - -r requirements.txt

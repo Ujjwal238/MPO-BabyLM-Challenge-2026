@@ -1,0 +1,13 @@
+STATUS: Error: regular_0_ops has the wrong number of examples.
+
+STRICT-SMALL by NLP Average:
+   BabyLM-2026-Baseline-Strict-Small-Interaction | {'Overall Average': 38.71, 'NLP Average': 49.04, 'BLiMP': 63.07, 'Entity Tracking': 19.62, 'GlobalPIQA': 36.14, '(Super)GLUE': 63.62}
+   BabyLM-2026-Baseline-GPT2-Strict-Small | {'Overall Average': 37.38, 'NLP Average': 48.99, 'BLiMP': 65.23, 'Entity Tracking': 19.1, 'GlobalPIQA': 35.09, '(Super)GLUE': 63.8}
+   instanton-baseline | {'Overall Average': 38.33, 'NLP Average': 46.37, 'BLiMP': 65.93, 'Entity Tracking': 0.0, 'GlobalPIQA': 37.11, '(Super)GLUE': 63.33}
+   ujjwal-very-bored | {'Overall Average': 34.13, 'NLP Average': 43.85, 'BLiMP': 69.85, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 69.12}
+   ujjwal-bored | {'Overall Average': 34.1, 'NLP Average': 43.81, 'BLiMP': 69.83, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 68.64}
+   wwm_curriculum_simplification_40k | {'Overall Average': 34.24, 'NLP Average': 43.25, 'BLiMP': 67.2, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 69.9}
+   wwm_curriculum_para_neg_16k | {'Overall Average': 34.41, 'NLP Average': 43.23, 'BLiMP': 68.88, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 69.87}
+   d2v-s3 | {'Overall Average': 34.4, 'NLP Average': 43.08, 'BLiMP': 72.08, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 64.18}
+   Baby Got BERT | {'Overall Average': 33.93, 'NLP Average': 43.0, 'BLiMP': 69.19, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 68.88}
+   LAD Got BERT | {'Overall Average': 33.83, 'NLP Average': 42.9, 'BLiMP': 67.86, 'Entity Tracking': 0.0, 'GlobalPIQA': 0.0, '(Super)GLUE': 69.05}

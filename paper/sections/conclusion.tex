@@ -1,0 +1,18 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+Under a fixed developmental budget, the cheapest resource is the one
+already being wasted. Our diagnosis found the final third of the
+Strict-Small epoch budget buying a lower training loss and no further
+competence, the two curves parting company exactly where the schedule
+keeps spending. That gap is the opening our method works through. Three
+principles, timing, preservation, and alignment, turn the observation into
+a recipe, and both a controlled study of seven interventions and the live
+leaderboard bear it out. The recipe is short: train until the evaluation
+saturates (Eq.~\ref{eq:wstar}), then spend what remains on anchored,
+evaluation-aligned refinement from that checkpoint, held close enough that
+the hard-won structure survives. Nothing in it is specific to our
+backbone, and both steps should carry to any model whose budget outlives
+its learning. We resist a strong developmental reading, though the shape
+is suggestive: exposure first, contrast after. At this scale, when the
+corpus is exhausted, the budget need not be.

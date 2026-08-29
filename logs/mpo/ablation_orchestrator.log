@@ -1,0 +1,13 @@
+2026-07-05 21:43:51 | === TRAIN gptbert_small_dpo_s43 (--init /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_70M --beta 0.1 --seed 43) ===
+2026-07-05 22:13:17 | RESULT gptbert_small_dpo_s43 : 2026-07-05 22:13:00 | RESULT blimp_fast AVG=70.14 2026-07-05 22:13:17 | RESULT supplement_fast AVG=64.40 
+2026-07-05 22:13:17 |   (gptbert_small_dpo_s43 final pref-acc 0.762)
+2026-07-05 22:13:17 | === TRAIN gptbert_small_dpo_s44 (--init /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_70M --beta 0.1 --seed 44) ===
+2026-07-05 22:42:39 | RESULT gptbert_small_dpo_s44 : 2026-07-05 22:42:22 | RESULT blimp_fast AVG=70.28 2026-07-05 22:42:39 | RESULT supplement_fast AVG=63.60 
+2026-07-05 22:42:39 |   (gptbert_small_dpo_s44 final pref-acc 0.875)
+2026-07-05 22:42:39 | === TRAIN gptbert_small_dpo_fromfinal (--init /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/final --beta 0.1 --seed 42) ===
+2026-07-05 23:11:01 | RESULT gptbert_small_dpo_fromfinal : 2026-07-05 23:10:45 | RESULT blimp_fast AVG=70.26 2026-07-05 23:11:01 | RESULT supplement_fast AVG=62.40 
+2026-07-05 23:11:01 |   (gptbert_small_dpo_fromfinal final pref-acc 0.787)
+2026-07-05 23:11:01 | === TRAIN gptbert_small_dpo_hardneg_b01 (--init /Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_70M --beta 0.1 --hard_neg --seed 42) ===
+2026-07-05 23:39:34 | RESULT gptbert_small_dpo_hardneg_b01 : 2026-07-05 23:39:18 | RESULT blimp_fast AVG=70.16 2026-07-05 23:39:34 | RESULT supplement_fast AVG=64.40 
+2026-07-05 23:39:34 |   (gptbert_small_dpo_hardneg_b01 final pref-acc 0.850)
+2026-07-05 23:39:34 | === ALL DPO ABLATIONS COMPLETE ===

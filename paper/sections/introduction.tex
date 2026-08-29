@@ -1,0 +1,49 @@
+\section{Introduction}
+\label{sec:intro}
+
+A child hears no more than about 100 million words by early adolescence. A
+language model consumes several orders of magnitude more before it is
+called trained. The BabyLM Challenge asks what this gap conceals: how much
+linguistic competence can pretraining extract from a corpus a child could
+plausibly have heard? \citep{warstadt2023findings,charpentier2025findings}
+We compete in the Strict-Small track of the 2026 edition
+\citep{choshen2026babylm}, the tightest form of the question: at most 10
+million words of text, with the corpus traversed at most ten times.
+
+Most entries respond by adding signal. New objectives, curricula,
+architectures, tokenizers, and distilled teachers arrive every year
+\citep{hu2024findings,charpentier2025findings}. We start from a different
+question: before adding anything, when does the existing budget do its work?
+Training a \rParamsM{}-parameter GPT-BERT hybrid
+\citep{charpentier2024gptbert} under the track rules, we find that
+downstream competence saturates by roughly \rPeakCkpt{} words seen, seven of
+the ten permitted epochs, while training loss keeps falling. Those last
+epochs purchase a lower loss, not new competence. A per-phenomenon breakdown
+adds a second fact: a small cluster of long-distance dependencies is
+acquired last and stays fragile to the end.
+
+The diagnosis dictates what a useful intervention must look like. It should
+arrive after saturation, where its gradient no longer competes with language
+modeling for capacity. It must be anchored, because fragile structure is
+what strong new gradients destroy first. And it should share the functional
+form of the evaluation, which for the core benchmarks is a likelihood
+comparison between minimally different strings. We call these the timing,
+preservation, and alignment principles.
+
+Their instantiation is \MPOlong{} (\MPO{}): a short preference-optimization
+phase \citep{rafailov2023dpo} that restarts from the saturation checkpoint
+and teaches the model to prefer real corpus sentences over length-preserving
+corruptions of them, with a frozen reference penalizing drift
+(Figure~\ref{fig:abstract}). The principles are tested rather than assumed.
+A controlled study of seven in-training interventions drawn from BabyLM
+entries and the broader pretraining literature confirms both predictions:
+none improves on the baseline, and the unanchored ones damage the fragile
+cluster first. \MPO{} improves five of the seven official task columns and concedes
+under a point on the rest, is alone in repairing the fragile cluster,
+and matches the fully trained baseline after \rDpoEpochs{} rather than
+\rEpochs{} epochs of exposure; our \MPO{} entry places \rRankDpo{} on the
+track leaderboard, the fully trained baseline \rRankBase{}.
+
+Beyond the method, the paper contributes the saturation diagnosis, cheap
+to run and decisive about where post-training signal belongs, and the
+controlled study of why published gains fail to transfer here.

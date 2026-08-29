@@ -1,0 +1,24 @@
+# derived data: rebuild with src/prepare_data.py and src/prepare_contrastive_data.py
+data/processed/
+data/processed_*/
+data/strict_small/
+
+# model weights: fetch with src/fetch_checkpoints.py
+checkpoints/
+
+# evaluation harness: install with scripts/setup_eval.sh
+babylm-eval/
+
+__pycache__/
+*.pyc
+.DS_Store
+
+# LaTeX build products
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.synctex.gz

@@ -1,0 +1,15 @@
+# Versions are the ones every run in the paper used (macOS 15, Apple M1 Pro, MPS).
+torch==2.7.0
+transformers==4.51.3
+tokenizers==0.21.1
+huggingface-hub==0.31.0
+numpy==2.2.5
+
+# figure generation (paper/figures/*.py)
+matplotlib==3.10.1
+
+# leaderboard submission (scripts/submit_entry.py, scripts/overnight_aoa_fix.py)
+requests==2.32.3
+
+# morphology-aware tokenizer intervention only (src/train_morph_tokenizer.py)
+morfessor==2.0.6

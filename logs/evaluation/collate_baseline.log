@@ -1,0 +1,100 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/admin1/Downloads/babylm-eval/eval_v2/strict/evaluation_pipeline/collate_preds.py", line 675, in <module>
+    main()
+    ~~~~^^
+  File "/Users/admin1/Downloads/babylm-eval/eval_v2/strict/evaluation_pipeline/collate_preds.py", line 671, in main
+    collate_preds(args)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/Users/admin1/Downloads/babylm-eval/eval_v2/strict/evaluation_pipeline/collate_preds.py", line 419, in collate_preds
+    fast_eval_results = get_fast_eval_metrics(args)
+  File "/Users/admin1/Downloads/babylm-eval/eval_v2/strict/evaluation_pipeline/collate_preds.py", line 529, in get_fast_eval_metrics
+    revision_fast_results = get_revision_fast_eval_metrics(args, revision_name)
+  File "/Users/admin1/Downloads/babylm-eval/eval_v2/strict/evaluation_pipeline/collate_preds.py", line 550, in get_revision_fast_eval_metrics
+    revision_results["ewok"] = _calculate_target_results(ewok_results, "ewok", data_path / "ewok_fast") if ewok_results is not None else None
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/admin1/Downloads/babylm-eval/eval_v2/strict/evaluation_pipeline/collate_preds.py", line 576, in _calculate_target_results
+    with (path_to_data / subtask).with_suffix(".jsonl").open("r") as data_file:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/admin1/miniconda3/envs/babylm/lib/python3.13/pathlib/_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'evaluation_data/fast_eval/ewok_fast/social-relations.jsonl'
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_1M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_2M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_3M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_4M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_5M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_6M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_7M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_8M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_9M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_10M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_20M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_30M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_40M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_50M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_60M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_70M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_80M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_90M and will be set to None.
+The entity tracking data is missing!
+The global_piqa_parallel data is missing!
+The global_piqa_nonparallel data is missing!
+Warning: Some fast evaluation tasks are missing for revision chck_100M and will be set to None.
+Warning: AoA score predictions not found at /Users/admin1/Downloads/babylm-eval/strict/results/Ujjwal-bored/main/zero_shot/mntp/AoA_word/aoa_score.json, setting to None

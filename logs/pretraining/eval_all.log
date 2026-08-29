@@ -1,0 +1,189 @@
+2026-06-28 22:09:05 | MASTER | ===== MASTER EVAL START =====
+2026-06-28 22:09:05 | MASTER | [stage 1/2] final model -> FULL zero-shot eval
+2026-06-28 22:09:05 | === EVAL label='final' mode=full backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/final ===
+2026-06-28 22:09:05 | >>> START blimp/blimp_filtered
+2026-06-28 22:46:07 | <<< DONE  blimp/blimp_filtered | AVG=69.83 | 2222s
+2026-06-28 22:46:07 | >>> START blimp/supplement_filtered
+2026-06-28 22:50:37 | <<< DONE  blimp/supplement_filtered | AVG=63.77 | 270s
+2026-06-28 22:50:37 | SKIP ewok/ewok_filtered (data not present)
+2026-06-28 22:50:37 | >>> START comps/comps
+2026-06-28 23:09:05 | <<< DONE  comps/comps | AVG=52.23 | 1108s
+2026-06-28 23:09:05 | >>> START entity_tracking/entity_tracking
+/Users/admin1/Downloads/babylm-eval/training/eval_local.sh: line 28: 95747 Killed: 9               $PY -m evaluation_pipeline.sentence_zero_shot.run --model_path_or_name "$MODEL" --backend $BACKEND --task "$task" --data_path "$DIR/$data" --save_predictions >> "$LOG" 2>&1
+2026-06-28 23:22:19 | <<< FAILED entity_tracking/entity_tracking (see log above)
+2026-06-28 23:22:19 | >>> START reading
+2026-06-28 23:22:24 | <<< FAILED reading
+2026-06-28 23:22:24 | === EVAL 'final' (full) COMPLETE in 4399s ===
+2026-06-28 23:22:24 | MASTER | [stage 2/2] all checkpoints -> FAST zero-shot eval
+2026-06-28 23:22:24 | === EVAL label='chck_1M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_1M ===
+2026-06-28 23:22:24 | >>> START blimp/blimp_fast
+2026-06-28 23:29:29 | <<< DONE  blimp/blimp_fast | AVG=54.21 | 425s
+2026-06-28 23:29:29 | >>> START blimp/supplement_fast
+2026-06-28 23:29:45 | <<< DONE  blimp/supplement_fast | AVG=52.80 | 16s
+2026-06-28 23:29:45 | SKIP ewok/ewok_fast (data not present)
+2026-06-28 23:29:45 | >>> START reading
+2026-06-28 23:32:23 | <<< DONE reading | 158s
+2026-06-28 23:32:23 | === EVAL 'chck_1M' (fast) COMPLETE in 599s ===
+2026-06-28 23:32:23 | === EVAL label='chck_2M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_2M ===
+2026-06-28 23:32:23 | >>> START blimp/blimp_fast
+2026-06-28 23:39:20 | <<< DONE  blimp/blimp_fast | AVG=53.31 | 417s
+2026-06-28 23:39:20 | >>> START blimp/supplement_fast
+2026-06-28 23:39:36 | <<< DONE  blimp/supplement_fast | AVG=51.20 | 16s
+2026-06-28 23:39:36 | SKIP ewok/ewok_fast (data not present)
+2026-06-28 23:39:36 | >>> START reading
+2026-06-28 23:42:17 | <<< DONE reading | 161s
+2026-06-28 23:42:17 | === EVAL 'chck_2M' (fast) COMPLETE in 594s ===
+2026-06-28 23:42:17 | === EVAL label='chck_3M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_3M ===
+2026-06-28 23:42:17 | >>> START blimp/blimp_fast
+2026-06-28 23:49:24 | <<< DONE  blimp/blimp_fast | AVG=52.69 | 427s
+2026-06-28 23:49:24 | >>> START blimp/supplement_fast
+2026-06-28 23:49:40 | <<< DONE  blimp/supplement_fast | AVG=54.00 | 16s
+2026-06-28 23:49:40 | SKIP ewok/ewok_fast (data not present)
+2026-06-28 23:49:40 | >>> START reading
+2026-06-28 23:52:23 | <<< DONE reading | 163s
+2026-06-28 23:52:23 | === EVAL 'chck_3M' (fast) COMPLETE in 606s ===
+2026-06-28 23:52:23 | === EVAL label='chck_4M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_4M ===
+2026-06-28 23:52:23 | >>> START blimp/blimp_fast
+2026-06-28 23:59:23 | <<< DONE  blimp/blimp_fast | AVG=54.22 | 420s
+2026-06-28 23:59:23 | >>> START blimp/supplement_fast
+2026-06-28 23:59:38 | <<< DONE  blimp/supplement_fast | AVG=58.00 | 15s
+2026-06-28 23:59:38 | SKIP ewok/ewok_fast (data not present)
+2026-06-28 23:59:38 | >>> START reading
+2026-06-29 00:02:23 | <<< DONE reading | 165s
+2026-06-29 00:02:23 | === EVAL 'chck_4M' (fast) COMPLETE in 600s ===
+2026-06-29 00:02:23 | === EVAL label='chck_5M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_5M ===
+2026-06-29 00:02:23 | >>> START blimp/blimp_fast
+2026-06-29 00:09:46 | <<< DONE  blimp/blimp_fast | AVG=55.84 | 443s
+2026-06-29 00:09:46 | >>> START blimp/supplement_fast
+2026-06-29 00:10:04 | <<< DONE  blimp/supplement_fast | AVG=56.80 | 18s
+2026-06-29 00:10:04 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 00:10:04 | >>> START reading
+2026-06-29 00:12:50 | <<< DONE reading | 166s
+2026-06-29 00:12:50 | === EVAL 'chck_5M' (fast) COMPLETE in 627s ===
+2026-06-29 00:12:50 | === EVAL label='chck_6M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_6M ===
+2026-06-29 00:12:50 | >>> START blimp/blimp_fast
+2026-06-29 00:20:03 | <<< DONE  blimp/blimp_fast | AVG=57.25 | 433s
+2026-06-29 00:20:03 | >>> START blimp/supplement_fast
+2026-06-29 00:20:19 | <<< DONE  blimp/supplement_fast | AVG=56.40 | 16s
+2026-06-29 00:20:19 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 00:20:19 | >>> START reading
+2026-06-29 00:22:56 | <<< DONE reading | 157s
+2026-06-29 00:22:56 | === EVAL 'chck_6M' (fast) COMPLETE in 606s ===
+2026-06-29 00:22:56 | === EVAL label='chck_7M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_7M ===
+2026-06-29 00:22:56 | >>> START blimp/blimp_fast
+2026-06-29 00:29:58 | <<< DONE  blimp/blimp_fast | AVG=58.19 | 422s
+2026-06-29 00:29:58 | >>> START blimp/supplement_fast
+2026-06-29 00:30:14 | <<< DONE  blimp/supplement_fast | AVG=60.40 | 16s
+2026-06-29 00:30:14 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 00:30:14 | >>> START reading
+2026-06-29 00:32:53 | <<< DONE reading | 159s
+2026-06-29 00:32:53 | === EVAL 'chck_7M' (fast) COMPLETE in 597s ===
+2026-06-29 00:32:53 | === EVAL label='chck_8M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_8M ===
+2026-06-29 00:32:53 | >>> START blimp/blimp_fast
+2026-06-29 00:39:46 | <<< DONE  blimp/blimp_fast | AVG=58.35 | 413s
+2026-06-29 00:39:46 | >>> START blimp/supplement_fast
+2026-06-29 00:40:02 | <<< DONE  blimp/supplement_fast | AVG=58.80 | 16s
+2026-06-29 00:40:02 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 00:40:02 | >>> START reading
+2026-06-29 00:42:38 | <<< DONE reading | 156s
+2026-06-29 00:42:38 | === EVAL 'chck_8M' (fast) COMPLETE in 585s ===
+2026-06-29 00:42:38 | === EVAL label='chck_9M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_9M ===
+2026-06-29 00:42:38 | >>> START blimp/blimp_fast
+2026-06-29 00:49:43 | <<< DONE  blimp/blimp_fast | AVG=59.58 | 425s
+2026-06-29 00:49:43 | >>> START blimp/supplement_fast
+2026-06-29 00:50:00 | <<< DONE  blimp/supplement_fast | AVG=57.20 | 17s
+2026-06-29 00:50:00 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 00:50:00 | >>> START reading
+2026-06-29 00:52:42 | <<< DONE reading | 162s
+2026-06-29 00:52:42 | === EVAL 'chck_9M' (fast) COMPLETE in 604s ===
+2026-06-29 00:52:42 | === EVAL label='chck_10M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_10M ===
+2026-06-29 00:52:42 | >>> START blimp/blimp_fast
+2026-06-29 06:47:01 | <<< DONE  blimp/blimp_fast | AVG=59.61 | 21259s
+2026-06-29 06:47:01 | >>> START blimp/supplement_fast
+2026-06-29 07:12:28 | <<< DONE  blimp/supplement_fast | AVG=59.60 | 1527s
+2026-06-29 07:12:28 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 07:12:28 | >>> START reading
+2026-06-29 10:34:14 | <<< DONE reading | 12106s
+2026-06-29 10:34:14 | === EVAL 'chck_10M' (fast) COMPLETE in 34892s ===
+2026-06-29 10:34:14 | === EVAL label='chck_20M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_20M ===
+2026-06-29 10:34:14 | >>> START blimp/blimp_fast
+2026-06-29 10:41:21 | <<< DONE  blimp/blimp_fast | AVG=64.39 | 427s
+2026-06-29 10:41:21 | >>> START blimp/supplement_fast
+2026-06-29 10:41:37 | <<< DONE  blimp/supplement_fast | AVG=62.00 | 16s
+2026-06-29 10:41:37 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 10:41:37 | >>> START reading
+2026-06-29 10:44:18 | <<< DONE reading | 161s
+2026-06-29 10:44:18 | === EVAL 'chck_20M' (fast) COMPLETE in 604s ===
+2026-06-29 10:44:18 | === EVAL label='chck_30M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_30M ===
+2026-06-29 10:44:18 | >>> START blimp/blimp_fast
+2026-06-29 10:51:18 | <<< DONE  blimp/blimp_fast | AVG=64.67 | 420s
+2026-06-29 10:51:18 | >>> START blimp/supplement_fast
+2026-06-29 10:51:33 | <<< DONE  blimp/supplement_fast | AVG=62.00 | 15s
+2026-06-29 10:51:33 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 10:51:33 | >>> START reading
+2026-06-29 10:54:27 | <<< DONE reading | 174s
+2026-06-29 10:54:27 | === EVAL 'chck_30M' (fast) COMPLETE in 609s ===
+2026-06-29 10:54:27 | === EVAL label='chck_40M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_40M ===
+2026-06-29 10:54:27 | >>> START blimp/blimp_fast
+2026-06-29 11:01:47 | <<< DONE  blimp/blimp_fast | AVG=66.26 | 440s
+2026-06-29 11:01:47 | >>> START blimp/supplement_fast
+2026-06-29 11:02:03 | <<< DONE  blimp/supplement_fast | AVG=63.20 | 16s
+2026-06-29 11:02:03 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 11:02:03 | >>> START reading
+2026-06-29 11:04:43 | <<< DONE reading | 160s
+2026-06-29 11:04:43 | === EVAL 'chck_40M' (fast) COMPLETE in 616s ===
+2026-06-29 11:04:43 | === EVAL label='chck_50M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_50M ===
+2026-06-29 11:04:43 | >>> START blimp/blimp_fast
+2026-06-29 11:11:42 | <<< DONE  blimp/blimp_fast | AVG=68.74 | 419s
+2026-06-29 11:11:42 | >>> START blimp/supplement_fast
+2026-06-29 11:11:57 | <<< DONE  blimp/supplement_fast | AVG=68.80 | 15s
+2026-06-29 11:11:57 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 11:11:57 | >>> START reading
+2026-06-29 11:14:35 | <<< DONE reading | 158s
+2026-06-29 11:14:35 | === EVAL 'chck_50M' (fast) COMPLETE in 592s ===
+2026-06-29 11:14:35 | === EVAL label='chck_60M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_60M ===
+2026-06-29 11:14:35 | >>> START blimp/blimp_fast
+2026-06-29 11:21:41 | <<< DONE  blimp/blimp_fast | AVG=68.93 | 426s
+2026-06-29 11:21:41 | >>> START blimp/supplement_fast
+2026-06-29 11:21:58 | <<< DONE  blimp/supplement_fast | AVG=63.60 | 17s
+2026-06-29 11:21:58 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 11:21:58 | >>> START reading
+2026-06-29 11:24:39 | <<< DONE reading | 161s
+2026-06-29 11:24:39 | === EVAL 'chck_60M' (fast) COMPLETE in 604s ===
+2026-06-29 11:24:39 | === EVAL label='chck_70M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_70M ===
+2026-06-29 11:24:39 | >>> START blimp/blimp_fast
+2026-06-29 11:31:39 | <<< DONE  blimp/blimp_fast | AVG=70.13 | 420s
+2026-06-29 11:31:39 | >>> START blimp/supplement_fast
+2026-06-29 11:31:55 | <<< DONE  blimp/supplement_fast | AVG=65.60 | 16s
+2026-06-29 11:31:55 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 11:31:55 | >>> START reading
+2026-06-29 11:34:30 | <<< DONE reading | 155s
+2026-06-29 11:34:30 | === EVAL 'chck_70M' (fast) COMPLETE in 591s ===
+2026-06-29 11:34:30 | === EVAL label='chck_80M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_80M ===
+2026-06-29 11:34:30 | >>> START blimp/blimp_fast
+2026-06-29 11:41:24 | <<< DONE  blimp/blimp_fast | AVG=69.72 | 414s
+2026-06-29 11:41:24 | >>> START blimp/supplement_fast
+2026-06-29 11:41:40 | <<< DONE  blimp/supplement_fast | AVG=63.20 | 16s
+2026-06-29 11:41:40 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 11:41:40 | >>> START reading
+2026-06-29 11:44:17 | <<< DONE reading | 157s
+2026-06-29 11:44:17 | === EVAL 'chck_80M' (fast) COMPLETE in 587s ===
+2026-06-29 11:44:17 | === EVAL label='chck_90M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_90M ===
+2026-06-29 11:44:17 | >>> START blimp/blimp_fast
+2026-06-29 11:51:18 | <<< DONE  blimp/blimp_fast | AVG=70.05 | 421s
+2026-06-29 11:51:18 | >>> START blimp/supplement_fast
+2026-06-29 11:51:34 | <<< DONE  blimp/supplement_fast | AVG=64.80 | 16s
+2026-06-29 11:51:34 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 11:51:34 | >>> START reading
+2026-06-29 11:54:13 | <<< DONE reading | 159s
+2026-06-29 11:54:13 | === EVAL 'chck_90M' (fast) COMPLETE in 596s ===
+2026-06-29 11:54:14 | === EVAL label='chck_100M' mode=fast backend=mntp model=/Users/admin1/Downloads/babylm-eval/checkpoints/gptbert_small_v1/chck_100M ===
+2026-06-29 11:54:14 | >>> START blimp/blimp_fast
+2026-06-29 12:01:09 | <<< DONE  blimp/blimp_fast | AVG=70.01 | 415s
+2026-06-29 12:01:09 | >>> START blimp/supplement_fast
+2026-06-29 12:01:25 | <<< DONE  blimp/supplement_fast | AVG=65.20 | 16s
+2026-06-29 12:01:25 | SKIP ewok/ewok_fast (data not present)
+2026-06-29 12:01:25 | >>> START reading
+2026-06-29 12:04:03 | <<< DONE reading | 158s
+2026-06-29 12:04:03 | === EVAL 'chck_100M' (fast) COMPLETE in 589s ===
+2026-06-29 12:04:03 | MASTER | ===== MASTER EVAL COMPLETE in 50098s =====

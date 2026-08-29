@@ -2,7 +2,7 @@
 # Clone the official BabyLM 2026 evaluation pipeline, pin it to the commit the paper
 # ran against, and apply our patch.
 #
-# The patch is 53 lines across 8 files and does three things, none of which touch
+# The patch adds 39 lines across 7 files and does three things, none of which touch
 # scoring: it routes tensors to MPS when CUDA is absent (6 files), it lets the
 # age-of-acquisition task load byte-identical checkpoints from a local directory
 # instead of re-downloading each of 19 revisions from the Hub, and it adds an opt-in

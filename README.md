@@ -60,7 +60,7 @@ rather than appended to a finished model.
 
 The **evaluation** is the organizers' 2026 pipeline. No number in the paper's main table
 comes from our own harness; both entries are server-scored collations over the complete
-suite. Our patch to it is 53 lines and changes no scoring (`patches/`).
+suite. Our patch to it adds 39 lines across 7 files and changes no scoring (`patches/`).
 
 The paper also reports that **seven published interventions fail to improve on the baseline
 here**. That is a claim about transfer to a 33M-parameter model on a 10M-word budget, and
@@ -232,7 +232,7 @@ never acquired during pretraining in the first place. Nothing there for refineme
 ```
 src/          training, the MPO phase, the seven interventions, checkpoint fetching
 scripts/      evaluation orchestration, ablation drivers, Hub and leaderboard submission
-patches/      the 53-line diff against the official evaluation pipeline
+patches/      the 39-line diff against the official evaluation pipeline
 logs/         every run referenced above, 69 files
 results/      ablation reports and the two server-scored submission files
 paper/        LaTeX source, figure scripts, and the compiled paper

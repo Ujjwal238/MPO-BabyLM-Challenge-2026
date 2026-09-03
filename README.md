@@ -4,7 +4,7 @@
 
 ### Preference post-training from the saturation checkpoint for sample-efficient language modeling
 
-**[Ujjwal Mishra](https://scholar.google.co.in/citations?user=Ggw7z6sAAAAJ&hl=en)**<sup>1</sup> &nbsp; **Sudipta Roy**<sup>2,3</sup>
+**[Ujjwal Mishra](https://scholar.google.co.in/citations?user=Ggw7z6sAAAAJ&hl=en)**<sup>1</sup> &nbsp; **Sudipta Roy(https://scholar.google.com/citations?user=m0q1TWEAAAAJ&hl=en)**<sup>2,3</sup>
 
 <sup>1</sup>School of Computing, Indian Institute of Information Technology (IIIT) Una, Himachal Pradesh, India
 

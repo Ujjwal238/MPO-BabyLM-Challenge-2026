@@ -4,11 +4,13 @@
 
 ### Preference post-training from the saturation checkpoint for sample-efficient language modeling
 
-**[Ujjwal Mishra](https://scholar.google.co.in/citations?user=Ggw7z6sAAAAJ&hl=en)**
+**[Ujjwal Mishra](https://scholar.google.co.in/citations?user=Ggw7z6sAAAAJ&hl=en)**<sup>1</sup> &nbsp; **Sudipta Roy**<sup>2,3</sup>
 
-Indian Institute of Information Technology Una
+<sup>1</sup>School of Computing, Indian Institute of Information Technology (IIIT) Una, Himachal Pradesh, India
 
-Accepted at the BabyLM Challenge 2026 &nbsp;·&nbsp; [paper](paper/mpo_babylm2026.pdf) &nbsp;·&nbsp; preprint link to follow
+<sup>2</sup>AI and Data Science, Jio University, Navi Mumbai, India &nbsp;&nbsp; <sup>3</sup>UNSW Bengaluru, India
+
+Accepted at the BabyLM Challenge 2026
 
 </div>
 
@@ -18,8 +20,9 @@ Accepted at the BabyLM Challenge 2026 &nbsp;·&nbsp; [paper](paper/mpo_babylm202
 
 The BabyLM Strict-Small track allows ten million words of text, traversed at most ten
 times. Entries usually respond by adding training signal: a new objective, optimizer,
-curriculum, or teacher. This repository contains the code, logs, and checkpoints for a
-different response, which is to ask when the existing budget stops paying.
+curriculum, or teacher. This repository holds the code and the run logs for a different
+response, which is to ask when the existing budget stops paying. Checkpoints are
+published separately, on the Hub.
 
 A 33M-parameter GPT-BERT hybrid trained under the track rules **saturates on downstream
 evaluation at roughly 70M words seen**, seven of the ten permitted epochs, while training
@@ -157,7 +160,7 @@ python src/train_dpo.py --init checkpoints/hub/baseline_chck_70M --run_name mpo_
 bash scripts/dpo_canary.sh checkpoints/mpo_repro/chck_dpo_1250
 ```
 
-**A few hours.** The ablations behind Tables 3 and 7.
+**A few hours.** The ablations behind Tables 3 and 9.
 
 ```bash
 bash scripts/run_dpo_ablations.sh    # seeds, initialization, hard negatives  (~2 h)
@@ -189,8 +192,8 @@ the repository is worth having rather than just the code.
 
 - **The trajectory reproduces from primary logs.** Fast BLiMP at 1M, 10M, 30M, 50M, 70M and
   100M words reads 54.21, 59.61, 64.67, 68.74, 70.13, 70.01 in `logs/pretraining/`, which is
-  what `paper/figures/fig_saturation.py` plots and what the macros in `paper/results.tex`
-  record. There is one source for each number and no number is written twice.
+  what the paper's saturation figure plots and what its macro file records. The paper keeps
+  one source for each number and writes no number twice; the logs here are that source.
 - **Determinism.** A shared canary log was once truncated by a later sweep, which put the
   provenance of one table row in doubt. Rather than trust it, the canary was rerun on the
   submitted checkpoint and reproduced 70.24 and 65.60 exactly, along with the whole fragile
@@ -235,7 +238,6 @@ scripts/      evaluation orchestration, ablation drivers, Hub and leaderboard su
 patches/      the 39-line diff against the official evaluation pipeline
 logs/         every run referenced above, 69 files
 results/      ablation reports and the two server-scored submission files
-paper/        LaTeX source, figure scripts, and the compiled paper
 artifacts/    the byte-level BPE tokenizer, fit on the training split alone
 ```
 
@@ -253,7 +255,7 @@ On the path to the result:
 | `src/fetch_checkpoints.py` | pulls any published checkpoint by name from the Hub |
 | `scripts/setup_eval.sh` | clones, pins and patches the official evaluation pipeline |
 | `scripts/dpo_canary.sh` | the fast BLiMP and supplement A/B used to gate every decision |
-| `scripts/run_dpo_ablations.sh`, `scripts/run_op_ablations.sh` | the ablation drivers behind Tables 3 and 7 |
+| `scripts/run_dpo_ablations.sh`, `scripts/run_op_ablations.sh` | the ablation drivers behind Tables 3 and 9 |
 
 Supporting, not on the path to the result: `src/muon.py`, `src/distill.py`,
 `src/precompute_ref_losses.py` and `src/train_morph_tokenizer.py`,
@@ -288,18 +290,8 @@ model = AutoModelForMaskedLM.from_pretrained(path, trust_remote_code=True)
 tok = AutoTokenizer.from_pretrained(path)
 ```
 
-## Citation
-
-```bibtex
-@inproceedings{mishra2026mpo,
-  title     = {Spend the Wasted Epochs: Preference Post-Training from the
-               Saturation Checkpoint for Sample-Efficient Language Modeling},
-  author    = {Mishra, Ujjwal},
-  booktitle = {Proceedings of the BabyLM Challenge},
-  year      = {2026}
-}
-```
-
 ## Contact
 
-[ujjwalmishra238@gmail.com](mailto:ujjwalmishra238@gmail.com)
+Ujjwal Mishra, [ujjwalmishra238@gmail.com](mailto:ujjwalmishra238@gmail.com)
+
+Sudipta Roy, [sudiptaroy01@yahoo.com](mailto:sudiptaroy01@yahoo.com)

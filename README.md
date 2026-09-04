@@ -40,9 +40,10 @@ corpus sentences over length-preserving corruptions of them under a frozen-refer
 | **this work, + MPO**                | **51.91**   | **71.3M**  |
 
 MPO improves five of the seven official task columns, concedes under a point on the other
-two, and does it at 7.2 rather than 10 epochs. On the last leaderboard pull before the
-submission deadline (2026-07-21, 07:55 UTC, 116 strict-small entries) the two entries
-placed fourth and eighth.
+two, and does it at 7.2 rather than 10 epochs. At the close of the submission period
+(2026-07-20 AoE, 118 strict-small entries) the two entries placed fifth and ninth on the
+NLP average, the leaderboard's sort key. The board stays open, so the live standing
+drifts as entries arrive after the deadline.
 
 Everything ran on one laptop: an Apple M1 Pro with 16 GB, on MPS, with no CUDA and no cloud.
 
@@ -133,6 +134,8 @@ anchor-free relative.
 ## Reproducing
 
 ```bash
+git clone https://github.com/Ujjwal238/MPO-BabyLM-Challenge-2026
+cd MPO-BabyLM-Challenge-2026
 conda env create -f environment.yml && conda activate mpo
 bash scripts/setup_eval.sh              # clone + pin + patch the official pipeline
 export BABYLM_EVAL=../babylm-eval/strict
